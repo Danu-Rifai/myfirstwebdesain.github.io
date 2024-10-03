@@ -1,0 +1,431 @@
+/* Import font */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Roboto+Mono:ital,wght@0,100..700;1,100..700&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Quicksand:wght@300..700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@100..900&display=swap');
+
+/* CSS Reset */
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed, 
+figure, figcaption, footer, header, hgroup, 
+menu, nav, output, ruby, section, summary,
+time, mark, audio, video {
+	margin: 0;
+	padding: 0;
+	border: 0;
+	font-size: 100%;
+	font: inherit;
+	vertical-align: baseline;
+}
+article, aside, details, figcaption, figure, 
+footer, header, hgroup, menu, nav, section {
+	display: block;
+}
+body {
+	line-height: 1;
+	font-family: "Poppins", sans-serif;
+}
+ol, ul {
+	list-style: none;
+}
+blockquote, q {
+	quotes: none;
+}
+blockquote:before, blockquote:after,
+q:before, q:after {
+	content: '';
+	content: none;
+}
+table {
+	border-collapse: collapse;
+	border-spacing: 0;
+}
+
+a {
+    text-decoration: none;
+}
+
+/* Variables */
+:root {
+    --background: #fff;
+    --text: #1C1C1C;
+    --teal: #4cbda2;
+    --text2: rgb(102, 102, 102);
+    --primary-color: #3742fa;
+    --white-color: #ffffff;
+    --light-color: #ced6e0;
+    --dark-color: #2f3542;
+    --box-shadow: rgba(0, 2, 1, 0.35) 0px 20px 30px -10px;
+}
+
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1.4rem 5%;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 9999;
+    background-color: rgba(255, 255, 255, 0);
+    /* backdrop-filter: blur(10px); */
+    transition: all .5s;
+}
+
+.navbar.scrolled {
+    backdrop-filter: blur(10px);
+}
+
+.navbar .nav-logo img {
+    width: 100px;
+}
+
+.navbar .navbar-nav {
+    display: flex;
+    flex-direction: row;
+}
+
+.navbar .navbar-nav a {
+    color: var(--background);
+    display: inline-block;
+    font-size: 1rem;
+    text-decoration: none;
+    margin: 0 1rem;
+}
+
+.navbar-search {
+    position: relative;
+    width: 30px;
+    height: 40px;
+    background: none;
+    border-radius: 30px;
+    transition: 0.3s;
+    overflow: hidden;
+}
+
+.navbar-search.active {
+    width: 300px;
+    border: 1px solid var(--text);
+    background-color: var(--background);
+}
+
+.navbar-search .icon {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 30px;
+    height: 40px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 100;
+    font-size: 20px;
+    cursor: pointer;
+    color: #000;
+}
+
+.navbar-search .input {
+    position: relative;
+    width: 190px;
+    height: 40px;
+    left: 30px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.navbar-search .input input {
+    position: absolute;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    border: none;
+    outline: none;
+    font-size: 1em;
+    padding-right: 10px;
+    color: var(--text);
+    font-family: "Poppins", sans-serif;
+}
+
+input[type="search"]::-webkit-search-cancel-button {
+    -webkit-appearance: none;
+    appearance: none;
+}
+
+.navbar-extra {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.navbar-extra .profileMenu svg.menu {
+    display: none;
+}
+
+.input::placeholder {
+    color: #ccc;
+    opacity: 1;
+    transition: opacity 0.3s ease;
+}
+
+/* Dropdown */
+.nav-item a.nav-link {
+    padding: 10px 0;
+}
+
+/* a.nav-link:hover, */ .nav-item:hover {
+    background-color: rgba(238, 238, 238, 0.24);
+    border-radius: 5px;
+}
+
+.nav-item:hover .dropdown {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.dropdown {
+    position: absolute;
+    margin-top: 0;
+    background-color: #fff;
+    box-shadow: 0 0 1px .5px rgba(161, 161, 161, 0.856);
+    border-radius: 7px;
+    display: none;
+    padding: 10px;
+    box-sizing: border-box;
+}
+
+.dropdown a.dropdown-item {
+    display: flex;
+    gap: 10px;
+    padding: 10px;
+    box-sizing: border-box;
+    border-radius: 5px;
+}
+
+.dropdown a.dropdown-item:hover {
+    background-color: #ececec;
+}
+
+.dropdown a.dropdown-item .icon i, .dropdown a.dropdown-item .icon svg {
+    font-size: 20px;
+}
+
+.dropdown a.dropdown-item .dropdown-main {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    color: var(--text);
+}
+
+.dropdown a.dropdown-item .dropdown-main p {
+    font-size: .9rem;
+    color: var(--text);
+}
+
+.dropdown a.dropdown-item .dropdown-main span {
+    font-size: .8rem;
+    color: var(--text);
+}
+
+/* for section */
+
+section.programPage {
+    width: 100%;
+    height: 550px;
+    background-color: var(--light-color);
+    background-image: url("../ASSETS/courses/game_developer.jpg");
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position-x: left;
+    position: relative;
+}
+
+section.programPage::before {
+    content: '';
+    width: 100%;
+    height: 100%;
+    position: absolute;
+}
+
+section.programPage .programHeadline {
+    max-width: 600px;
+    margin-top: 13rem;
+    margin-left: 13%;
+    position: absolute;
+    color: var(--background);
+}
+
+.programHeadline span {
+    font-size: .9rem;
+    letter-spacing: .3rem;
+}
+
+.programHeadline h3 {
+    font-size: 2.5rem;
+    font-weight: 600;
+    margin-top: 1rem;
+    text-transform: capitalize;
+    letter-spacing: -1px;
+}
+
+.programHeadline p {
+    font-size: .9rem;
+    font-weight: 400;
+    margin-top: 1rem;
+    line-height: 20px;
+    max-width: 400px;
+    width: auto;
+}
+
+.programHeadline a {
+    margin-top: 2rem;
+}
+
+/* coursePage */
+
+section.coursePage {
+    padding: 0 9%;
+    box-sizing: border-box;
+}
+
+section.coursePage .pageTitle {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 3rem 0;
+}
+
+.pageTitle .pageTitleContent {
+    display: flex;
+    flex-direction: column;
+    gap: .3rem;
+}
+
+.pageTitleContent h3 {
+    font-family: "Poppins", sans-serif;
+    font-size: 2.3rem;
+    letter-spacing: -3px;
+    font-weight: 600;
+    color: var(--text);
+}
+
+.pageTitleContent p {
+    font-size: .9rem;
+    max-width: 80%;
+    width: auto;
+}
+
+.pageTitle a.button {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    color: rgb(0, 153, 255);
+    padding: 0 20px;
+    width: 120px;
+    height: 45px;
+    border: 1px solid rgb(0, 153, 255);
+    border-radius: 50px;
+    transition: all .3s;
+}
+
+.pageTitle a.button:hover {
+    background-color: rgba(0, 153, 255, 0.171);
+}
+
+.page a.button p {
+    width: fit-content;
+}
+
+.pageTitle a.button svg {
+    width: 1.3rem;
+    fill: rgb(0, 153, 255);
+    transform: rotate(22.5deg);
+}
+
+section.coursePage .coursePageContainer {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    grid-template-rows: repeat(3);
+    gap: 1rem;
+}
+
+.coursePageContainer .courseItem {
+    display: flex;
+    max-width: auto;
+    flex-direction: column;
+    gap: .6rem;
+    box-shadow: 0px 5px 10px rgba(0, 0, 0, 0.3);
+    border-radius: 0 0 10px 10px;
+    transition: all .3s;
+}
+
+.courseItem:hover {
+    transform: scale(1.05);
+}
+
+.courseItem img {
+    width: 100%;
+    height: 150px;
+    object-fit: cover;
+    border-radius: 10px 10px 0 0;
+}
+
+.courseItem .informationCourse {
+    display: flex;
+    flex-direction: column;
+    gap: .5rem;
+    padding: 1rem 1rem;
+    box-sizing: border-box;
+}
+
+.informationCourse span.price {
+    font-size: 1.1rem;
+    color: var(--text);
+    font-weight: bold;
+}
+
+.informationCourse h4.courseName {
+    font-size: 1.2rem;
+    color: var(--text);
+}
+
+.informationCourse p.courseCaption {
+    font-size: .75rem;
+    color: var(--text2);
+    margin-top: 5px;
+    line-height: 15px;
+}
+
+.informationCourse .moreInformation {
+    display: flex;
+    color: var(--text);
+    font-size: .9rem;
+    padding-top: .5rem;
+    border-top: 1px solid rgba(102, 102, 102, 0.603);
+    margin-top: .5rem;
+    gap: 2rem;
+}
+
+.moreInformation svg {
+    width: 1.15rem;
+    fill: var(--text);
+}
+
+.moreInformation :is(.user, .time) {
+    display: flex;
+    gap: .15rem;
+    align-items: center;
+}
+
+.moreInformation :is(.user, .time) span {
+    font-size: .85rem;
+}
